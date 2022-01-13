@@ -14,6 +14,10 @@ stages{
                 success {
                     echo 'Now Archiving...'
                     archiveArtifacts artifacts: '**/target/*.war'
+                    recordIssues(
+                    enabledForFailure: true, aggregatingResults: true,
+                    tools: [java(), checkStyle(), findBugs()]
+            )
                 }
             }
         }
