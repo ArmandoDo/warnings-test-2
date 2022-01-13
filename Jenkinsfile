@@ -16,7 +16,7 @@ stages{
                     archiveArtifacts artifacts: '**/target/*.war'
                     recordIssues(
                     enabledForFailure: true, aggregatingResults: true,
-                    tools: [java(), checkStyle(), findBugs()]
+                    tools: [java(), checkStyle(pattern: '**/*.war', reportEncoding: 'UTF-8'), findBugs(pattern: '**/*.war')]
             )
                 }
             }
